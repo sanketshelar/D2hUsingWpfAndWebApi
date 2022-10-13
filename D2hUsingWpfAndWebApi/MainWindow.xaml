@@ -1,0 +1,56 @@
+﻿<Window x:Class="D2hUsingWpfAndWebApi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:D2hUsingWpfAndWebApi"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+   
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <ListBox ItemsSource="{Binding Packages,Source={StaticResource ShowCustomerViewModel}}" SelectedItem="{Binding Path=Highlighted,Source={StaticResource ShowCustomerViewModel}}" SelectionMode="Multiple" Grid.Row="0" Grid.Column="0" Height="100" Width="250" VerticalAlignment="Top" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontSize="20">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <ListBoxItem Content="{Binding Name}"></ListBoxItem>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+
+             
+                <Button Command="{Binding SearchCommand,Source={StaticResource ShowCustomerViewModel}}" Content="Search" Height="50" Width="150" FontSize="20" VerticalAlignment="Bottom"></Button>
+
+                <TextBox Text="{Binding Name,Source={StaticResource ShowCustomerViewModel}}" Grid.Column="1" Height="40" Width="250" VerticalAlignment="Top" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontSize="20"/>
+                <Button Command="{Binding SubmitCommand,Source={StaticResource ShowCustomerViewModel}}" Grid.Column="1" Width="200" Height="50" Content="Get Customer" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+
+                <Button Command="{Binding CustomerAdd,Source={StaticResource ShowCustomerViewModel}}" Content="Add Customer" Height="50" Width="200" Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18"></Button>
+            </Grid>
+
+            <!--<Label Content="{Binding Id,Source={StaticResource ShowCustomerViewModel}}" Height="40" Width="100" Grid.Row="1" HorizontalAlignment="Center"></Label>-->
+           <!--<DataGrid Grid.Row="2" ItemsSource="{Binding Customers,Source={StaticResource ShowCustomerViewModel}}"/>-->
+            <DataGrid Grid.Row="2" ItemsSource="{Binding Customers,Source={StaticResource ShowCustomerViewModel}}" AutoGenerateColumns="False" Visibility="{Binding Visibility,Source={StaticResource ShowCustomerViewModel}}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="100"/>
+                    <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"  Width="100"/>
+                    <DataGridTextColumn Header="Username" Binding="{Binding Username}"  Width="100"/>
+                    <DataGridTextColumn Header="Package" Binding="{Binding PackageName}"  Width="100"/>
+                    <DataGridTextColumn Header="Group" Binding="{Binding GroupName}"  Width="100"/>
+                    <DataGridTextColumn Header="City" Binding="{Binding CityName}"  Width="100"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding StatusName}"  Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>

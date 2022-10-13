@@ -1,0 +1,64 @@
+﻿<Window x:Class="D2hUsingWpfAndWebApi.AddCustomer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:D2hUsingWpfAndWebApi"
+        mc:Ignorable="d"
+        Title="AddCustomer" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="210"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <Label Height="25px" Width="160px" Content="Enter First Name" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0"/>
+        <Label Height="25px" Width="160px" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Content="Enter Last Name" Margin="0,25,0,0"/>
+        <Label Height="25px" Width="160px" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Content="Enter Username" Margin="0,45,0,0"/>
+        <Label Height="25px" Width="160px"  Content="Enter Password" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,65,0,0"/>
+
+        <TextBox Text="{Binding FirstName,Source={StaticResource AddCustomerViewModel}}" Grid.Row="0" Grid.Column="1" Height="25" VerticalAlignment="Top" Margin="0,5,0,0" Width="200" HorizontalAlignment="Left"></TextBox>
+        <TextBox Text="{Binding LastName,Source={StaticResource AddCustomerViewModel}}" Grid.Row="0" Grid.Column="1" Height="25" VerticalAlignment="Top" Margin="0,25,0,0"  Width="200" HorizontalAlignment="Left"></TextBox>
+        <TextBox Text="{Binding UserName,Source={StaticResource AddCustomerViewModel}}" Grid.Row="0" Grid.Column="1" Height="25" VerticalAlignment="Top" Margin="0,45,0,0"  Width="200" HorizontalAlignment="Left"></TextBox>
+        <TextBox Text="{Binding Password,Source={StaticResource AddCustomerViewModel}}" Grid.Row="0" Grid.Column="1" Height="25" VerticalAlignment="Top" Margin="0,65,0,0"  Width="200" HorizontalAlignment="Left"></TextBox>
+
+      
+        <ListBox ItemsSource="{Binding Packages,Source={StaticResource AddCustomerViewModel}}" SelectedItem="{Binding Path=PackageHighlighted,Source={StaticResource AddCustomerViewModel}}" SelectionMode="Single" Grid.Row="0" Grid.Column="1" Height="100" Width="250" VerticalAlignment="Bottom" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontSize="20">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ListBoxItem Content="{Binding Name}"></ListBoxItem>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox ItemsSource="{Binding Cities,Source={StaticResource AddCustomerViewModel}}" SelectedItem="{Binding Path=CityHighlighted,Source={StaticResource AddCustomerViewModel}}" SelectionMode="Single" Grid.Row="1" Grid.Column="1" Height="100" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontSize="20">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ListBoxItem Content="{Binding Name}"></ListBoxItem>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox ItemsSource="{Binding Groups,Source={StaticResource AddCustomerViewModel}}" SelectedItem="{Binding Path=GroupHighlighted,Source={StaticResource AddCustomerViewModel}}" SelectionMode="Single" Grid.Row="0" Grid.Column="0" Height="100" Width="250" VerticalAlignment="Bottom" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontSize="20">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ListBoxItem Content="{Binding NameOfGroup}"></ListBoxItem>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox ItemsSource="{Binding Status,Source={StaticResource AddCustomerViewModel}}" SelectedItem="{Binding Path=StatusHighlighted,Source={StaticResource AddCustomerViewModel}}" SelectionMode="Single" Grid.Row="1" Grid.Column="0" Height="100" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontSize="20">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ListBoxItem Content="{Binding StatusName}"></ListBoxItem>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Command="{Binding AddCustomer,Source={StaticResource AddCustomerViewModel}}" Grid.Row="2" HorizontalAlignment="Right" Content="Add Customer" Height="30px" Width="200"/>
+    </Grid>
+</Window>

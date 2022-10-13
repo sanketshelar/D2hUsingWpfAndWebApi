@@ -1,0 +1,13 @@
+﻿<Application x:Class="D2hUsingWpfAndWebApi.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:D2hUsingWpfAndWebApi"
+             xmlns:app="clr-namespace:D2hUsingWpfAndWebApi.ViewModel"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <local:AddCustomer x:Key="AddCustomer"></local:AddCustomer>
+
+        <app:ShowCustomerViewModel x:Key="ShowCustomerViewModel"></app:ShowCustomerViewModel>
+        <app:AddCustomerViewModel x:Key="AddCustomerViewModel"></app:AddCustomerViewModel>
+    </Application.Resources>
+</Application>
